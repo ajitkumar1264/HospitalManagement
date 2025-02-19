@@ -1,25 +1,29 @@
-name : deploy HMS application
+name: Deploy HMS Application
 
 on:
   push:
     branches:
-     - main
+      - main
 
 jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
 
     steps:
-    - name: checkout code
+    - name: Checkout code
       uses: actions/checkout@v3
 
-    - name: Set up Node Js
+    - name: Set up Node.js
       uses: actions/setup-node@v3
       with:
         node-version: 20
 
     - name: Install dependencies
-      run: npm install
+      run: |
+        cd HMS
+        npm install
 
     - name: Build HMS application
-      run: npm run build
+      run: |
+        cd HMS
+        npm run build
