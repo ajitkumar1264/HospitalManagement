@@ -12,6 +12,8 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
 
     - name: Set up Node.js
       uses: actions/setup-node@v3
@@ -28,7 +30,24 @@ jobs:
         cd HMS
         npm run build
 
-    - name: Delete branch after success
+    - name: Merge branch into main
+      run: |
+        git config --global user.name "github-actions"
+        git config --global user.email "github-actions@github.com"
+        
+        BRANCH_NAME=$(echo "${GITHUB_REF#refs/heads/}")
+        git checkout main
+        git pull origin main
+        
+        # Try merging the branch
+        if ! git merge --no-ff "$BRANCH_NAME" -m "Merging $BRANCH_NAME into main"; then
+          echo "Merge conflict detected. Resolve conflicts and retry."
+          exit 1
+        fi
+        
+        git push origin main
+
+    - name: Delete branch after successful merge
       if: success()
       run: |
         BRANCH_NAME=$(echo "${GITHUB_REF#refs/heads/}")
