@@ -2,7 +2,7 @@ name: Deploy HMS Application
 
 on:
   push:
-    branches:
+    branches-ignore:
       - main
 
 jobs:
@@ -27,3 +27,13 @@ jobs:
       run: |
         cd HMS
         npm run build
+
+    - name: Delete branch after success
+      if: success()
+      run: |
+        BRANCH_NAME=$(echo "${GITHUB_REF#refs/heads/}")
+        if [ "$BRANCH_NAME" != "main" ]; then
+          git push origin --delete "$BRANCH_NAME"
+        fi
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
