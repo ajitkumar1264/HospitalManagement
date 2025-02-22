@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useState } from "react";
+import { useLayoutEffect, useState } from "react";
 import { hasAuthParams, useAuth } from "react-oidc-context";
 
 function SignInRedirection() {
