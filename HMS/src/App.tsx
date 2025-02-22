@@ -1,27 +1,19 @@
-import { useState } from 'react'
-import './App.css'
+import { AuthProvider } from "react-oidc-context";
+import "./App.css";
+import { oidcConfig } from "./config/AuthConfig";
+import AppRoutes from "./Routes/AppRoutes";
+import { BrowserRouter } from "react-router-dom";
+import SignInRedirection from "./auth/SignInRedirection";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-      </div>
-      <h1>Ajitkumar vaghela</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <AuthProvider {...oidcConfig}>
+      <BrowserRouter>
+        <SignInRedirection />
+        <AppRoutes />
+      </BrowserRouter>
+    </AuthProvider>
+  );
 }
 
-export default App
+export default App;
