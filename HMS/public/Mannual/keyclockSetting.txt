@@ -1,0 +1,12 @@
+after that run keyclock image 
+
+you have to configure the keyclock 
+
+open chrome and open url 
+
+http://localhost:4000/
+
+here create new relm with name
+HMS
+
+create one user according to you
