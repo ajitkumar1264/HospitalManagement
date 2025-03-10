@@ -1,0 +1,164 @@
+{
+  "realm": "myrealm",
+  "enabled": true,
+  "roles": {
+    "realm": [
+      {
+        "name": "user",
+        "description": "Basic user role"
+      },
+      {
+        "name": "admin",
+        "description": "Administrator role"
+      }
+    ]
+  },
+  "clients": [
+    {
+      "clientId": "quarkus-app",
+      "name": "quarkus-app",
+      "description": "Backend service for Quarkus",
+      "rootUrl": "http://localhost:8080",
+      "adminUrl": "http://localhost:8080",
+      "baseUrl": "",
+      "surrogateAuthRequired": false,
+      "enabled": true,
+      "alwaysDisplayInConsole": false,
+      "clientAuthenticatorType": "client-secret",
+      "secret": "slI2QetCbSZakRjPi12xiitWO8sdkoz3",
+      "redirectUris": [
+        "http://localhost:8080/*"
+      ],
+      "webOrigins": [
+        "http://localhost:8080"
+      ],
+      "notBefore": 0,
+      "bearerOnly": false,
+      "consentRequired": false,
+      "standardFlowEnabled": true,
+      "implicitFlowEnabled": false,
+      "directAccessGrantsEnabled": true,
+      "serviceAccountsEnabled": false,
+      "publicClient": false,
+      "frontchannelLogout": true,
+      "protocol": "openid-connect",
+      "attributes": {
+        "realm_client": "false",
+        "oidc.ciba.grant.enabled": "false",
+        "client.secret.creation.time": "1741501995",
+        "backchannel.logout.session.required": "true",
+        "oauth2.device.authorization.grant.enabled": "false",
+        "backchannel.logout.revoke.offline.tokens": "false"
+      },
+      "authenticationFlowBindingOverrides": {},
+      "fullScopeAllowed": true,
+      "nodeReRegistrationTimeout": -1,
+      "defaultClientScopes": [
+        "web-origins",
+        "acr",
+        "profile",
+        "roles",
+        "basic",
+        "email"
+      ],
+      "optionalClientScopes": [
+        "address",
+        "phone",
+        "organization",
+        "offline_access",
+        "microprofile-jwt"
+      ],
+      "access": {
+        "view": true,
+        "configure": true,
+        "manage": true
+      }
+    },
+    {
+      "clientId": "react-app",
+      "name": "react-app",
+      "description": "Frontend React Application",
+      "rootUrl": "http://localhost:5173",
+      "adminUrl": "",
+      "baseUrl": "/",
+      "surrogateAuthRequired": false,
+      "enabled": true,
+      "alwaysDisplayInConsole": true,
+      "clientAuthenticatorType": "client-secret",
+      "redirectUris": [
+        "http://localhost:5173/*"
+      ],
+      "webOrigins": [
+        "http://localhost:5173"
+      ],
+      "notBefore": 0,
+      "bearerOnly": false,
+      "consentRequired": false,
+      "standardFlowEnabled": true,
+      "implicitFlowEnabled": false,
+      "directAccessGrantsEnabled": false,
+      "serviceAccountsEnabled": false,
+      "publicClient": true,
+      "frontchannelLogout": true,
+      "protocol": "openid-connect",
+      "attributes": {
+        "pkce.code.challenge.method": "S256"
+      },
+      "authenticationFlowBindingOverrides": {},
+      "fullScopeAllowed": true,
+      "nodeReRegistrationTimeout": -1,
+      "defaultClientScopes": [
+        "web-origins",
+        "acr",
+        "profile",
+        "roles",
+        "basic",
+        "email"
+      ],
+      "optionalClientScopes": [
+        "address",
+        "phone",
+        "organization",
+        "offline_access",
+        "microprofile-jwt"
+      ],
+      "access": {
+        "view": true,
+        "configure": true,
+        "manage": true
+      }
+    }
+  ],
+  "users": [
+    {
+      "username": "adminuser",
+      "email": "admin@gmail.com",
+      "firstName": "admin",
+      "lastName": "test",
+      "enabled": true,
+      "credentials": [
+        {
+          "type": "password",
+          "value": "admin",
+          "temporary": false
+        }
+      ],
+      "realmRoles": ["admin"]
+    },
+    {
+      "username": "testuser",
+      "email": "test@gmail.com",
+      "firstName": "user",
+      "lastName": "test",
+      "enabled": true,
+      "credentials": [
+        {
+          "type": "password",
+          "value": "user",
+          "temporary": false
+        }
+      ],
+      "realmRoles": ["user"]
+    }
+  ]
+}
