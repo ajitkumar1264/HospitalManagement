@@ -1,0 +1,8 @@
+pluginManagement {
+    plugins {
+        id "${quarkusPluginId}" version "${quarkusPluginVersion}"
+    }
+
+    includeBuild("../build-logic")
+}
+rootProject.name='user-service'
