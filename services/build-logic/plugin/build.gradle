@@ -12,6 +12,10 @@ dependencies {
     implementation gradleApi()
     implementation localGroovy()
     implementation enforcedPlatform('io.quarkus.platform:quarkus-bom:3.19.4')
+    compileOnly "org.projectlombok:lombok:1.18.34"
+    annotationProcessor "org.projectlombok:lombok:1.18.34"
+    compileOnly "org.mapstruct:mapstruct:1.6.0"
+    annotationProcessor "org.mapstruct:mapstruct-processor:1.6.0"
 }
 
 gradlePlugin {

@@ -3,5 +3,6 @@ plugins {
     id 'org.example.hms'
 }
 
-
-
+dependencies {
+    implementation 'io.quarkus:quarkus-oidc'
+}
