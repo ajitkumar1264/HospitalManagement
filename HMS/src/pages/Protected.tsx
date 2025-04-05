@@ -5,7 +5,7 @@ function Protected() {
 
   return (
     <div>
-      {/* <h1>Protected</h1>
+      <h1>Protected</h1>
 
       {loading && <p>Loading user rights...</p>}
       {error && <p style={{ color: 'red' }}>Error: {error}</p>}
@@ -14,7 +14,7 @@ function Protected() {
           <h3>API Response:</h3>
           <p>{data}</p>
         </div>
-      )} */}
+      )}
     </div>
   );
 }
