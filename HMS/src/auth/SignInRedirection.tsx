@@ -1,10 +1,9 @@
-import { useLayoutEffect, useState } from "react";
+import { useCallback, useLayoutEffect, useState } from "react";
 import { hasAuthParams, useAuth } from "react-oidc-context";
 
 function SignInRedirection() {
   const auth = useAuth();
 
-  console.log(auth)
   const [isFirstSignIn, setisFirstSignIn] = useState(true);
   
   const needSignIn = !hasAuthParams() &&
@@ -17,18 +16,17 @@ function SignInRedirection() {
     {
       setisFirstSignIn(false);
     }
-  })
+  },[auth.isAuthenticated])
 
-  const redirectLogin = async() => {
-    
+  const redirectLogin = useCallback(async () => {
     await auth.signinRedirect();
-  }
+  }, [auth]);
   
   useLayoutEffect(() => {
     if (needSignIn && isFirstSignIn) {
       redirectLogin()
     }
-  }, [needSignIn,auth.signinRedirect,isFirstSignIn]);
+  }, [needSignIn,auth.signinRedirect,isFirstSignIn,redirectLogin]);
 
   return null;
 }
