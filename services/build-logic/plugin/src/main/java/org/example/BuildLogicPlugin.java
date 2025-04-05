@@ -38,6 +38,14 @@ public class BuildLogicPlugin implements Plugin<Project> {
         project.getDependencies().add("testImplementation", "io.quarkus:quarkus-junit5");
         project.getDependencies().add("testImplementation", "io.rest-assured:rest-assured");
 
+        // ✅ Add Lombok and MapStruct
+        project.getDependencies().add("compileOnly", "org.projectlombok:lombok:1.18.34");
+        project.getDependencies().add("annotationProcessor", "org.projectlombok:lombok:1.18.34");
+
+        project.getDependencies().add("compileOnly", "org.mapstruct:mapstruct:1.6.0");
+        project.getDependencies().add("annotationProcessor", "org.mapstruct:mapstruct-processor:1.6.0");
+
+
         // Set group and version
         project.setGroup("org.acme");
         project.setVersion("1.0.0-SNAPSHOT");
