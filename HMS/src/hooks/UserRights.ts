@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useAuth } from 'react-oidc-context';
-import axios from 'axios';
+import axios,{AxiosError} from 'axios';
 
 function useUserRights() {
   const auth = useAuth();
@@ -20,8 +20,13 @@ function useUserRights() {
         });
 
         setData(response.data);
-      } catch (err:any) {
-        setError(err.response?.data || 'Unauthorized or fetch error');
+      } catch (err) {
+        const axiosError = err as AxiosError;
+        setError(
+          axiosError.response?.data
+            ? JSON.stringify(axiosError.response.data)
+            : 'Unauthorized or fetch error'
+        );
       } finally {
         setLoading(false);
       }
